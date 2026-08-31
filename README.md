@@ -116,7 +116,32 @@ Run the notebooks in the following order:
 
 The original complaint CSV is required for Notebook 1. Notebook 1 creates the 10,000-row sample used by both topic-modelling pipelines.
 
+
 The required packages for the BERTopic pipeline can be installed with:
 
 ```bash
 pip install bertopic sentence-transformers umap-learn hdbscan
+```
+
+## NMF Topic Number Selection
+
+The number of NMF topics was evaluated systematically instead of being chosen arbitrarily. Models containing between 5 and 12 topics were compared using reconstruction error, mean topic similarity, topic diversity, NPMI coherence, and manual interpretability.
+
+The eight-topic solution achieved an NPMI coherence score of **0.2541**, clearly improving on the 5–7 topic solutions and remaining close to the highest observed score of **0.2590** for 10 topics.
+
+Although models with more topics produced slightly better numerical scores, manual inspection showed increasing topic fragmentation. For example, the 10-topic solution introduced a narrow Wells Fargo-specific topic containing only 191 complaints.
+
+Therefore, **8 topics were selected as the optimal practical solution**, providing a strong balance between coherence, interpretability, topic distinctiveness, sufficient topic size, and model parsimony.
+
+## Final Eight NMF Topics
+
+| Topic | Label | Main Keywords |
+|---|---|---|
+| 1 | Hard Credit Inquiries | inquiry, inquiry credit, credit, hard inquiry, report, credit report, unauthorized |
+| 2 | Banking Customer Service / Funds Issues | bank, call, told, called, money, back, said, time |
+| 3 | Loan & Mortgage Payment Issues | payment, late, loan, mortgage, late payment, month, due, interest |
+| 4 | Debt Collection & Validation | debt, collection, company, agency, collection agency, validation, debt collection |
+| 5 | Bank Account Opening / Closure | account, opened, balance, closed, bank, account number, checking |
+| 6 | Credit Card & Balance Issues | card, credit card, credit, charge, capital one, balance, credit score |
+| 7 | Identity Theft & Fraud | identity, theft, identity theft, fraudulent, victim, fraudulent account |
+| 8 | Credit Reporting Disputes | credit, report, credit report, information, reporting, bureau, experian, dispute, inaccurate |
