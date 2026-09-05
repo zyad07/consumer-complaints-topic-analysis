@@ -23,6 +23,11 @@ The same 10,000 complaints were used for both pipelines to ensure a fair compari
 
 The dataset itself is not stored in this repository.
 
+Dataset source:
+
+Consumer Complaints Dataset for NLP – Kaggle  
+https://www.kaggle.com/datasets/shashwatwork/consume-complaints-dataset-fo-nlp
+
 ## Project Structure
 
 ### `01_data_exploration_preprocessing.ipynb`
